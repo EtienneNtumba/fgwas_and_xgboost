@@ -92,6 +92,49 @@ y_pred_prob = model.predict(dtest)
 auc_score = roc_auc_score(y_test, y_pred_prob)
 print(f"XGBoost AUC Score: {auc_score:.3f}")
 ```
+## XGBoost Feature Importance
+The bar chart below shows the importance of each feature in the XGBoost model:
+
+![Feature Importance](features_important.png)
+
+## SHAP Summary Plot
+SHAP values indicate how much each feature impacts model predictions. The plot below shows the feature importance based on SHAP values:
+
+![SHAP Plot](sharp_plot.png)
+
+## FGWAS vs Deep Learning Correlation
+The scatter plot below compares **FGWAS** posterior probabilities with **Deep Learning predictions**:
+
+![Correlation Plot](correl.png)
+
+## Top 10 SNPs from FGWAS
+| SNPID        | Posterior Probability (PPA) |
+|-------------|---------------------------|
+| rs629301    | 0.969628                  |
+| rs2479409   | 0.919978                  |
+| rs267733    | 0.615473                  |
+| rs2807834   | 0.355218                  |
+| rs2642442   | 0.184361                  |
+| rs478691    | 0.158113                  |
+| rs10863565  | 0.156845                  |
+| rs514230    | 0.146872                  |
+| rs10903129  | 0.0936026                  |
+| rs2587534   | 0.0870468                  |
+
+## Top 10 SNPs from Deep Learning
+| SNPID        | Prediction Score |
+|-------------|-----------------|
+| rs7526076   | 0.6178965       |
+| rs11584349  | 0.6178965       |
+| rs4970401   | 0.6178965       |
+| rs4246502   | 0.6178965       |
+| rs4075116   | 0.6178965       |
+| rs4073176   | 0.6178965       |
+| rs4073177   | 0.6178965       |
+| rs9442394   | 0.6178965       |
+| rs4326571   | 0.6178965       |
+| rs4333796   | 0.6178965       |
+
 
 ---
 
