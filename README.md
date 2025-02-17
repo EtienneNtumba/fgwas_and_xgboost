@@ -160,6 +160,55 @@ shap.summary_plot(shap_values, X_test)
 - **Blue points** indicate that lower values decrease the probability of trait association.
 - **Feature ranking** shows which genomic annotations influence predictions the most.
 
+## 2. Interpretation of the Results
+
+### 2.1 Feature Importance (XGBoost)
+
+- **Feature `F` is the most important**, followed by `N` and `Z`, suggesting they contribute significantly to the model's predictions.
+- **Annotations (`hepg2.E` and `ens_coding_exon`) have low importance**, meaning they might not strongly impact the classification of functional SNPs.
+
+### 2.2 SHAP Summary Plot
+
+- **Feature `Z` has a high impact**, showing strong influence on model predictions.
+- **Color gradient**: High values (red) vs. low values (blue) for each feature.
+- **Densely packed points near zero**: Many SNPs have minimal effect, while extreme values indicate a stronger impact.
+
+### 2.3 FGWAS vs Deep Learning Correlation
+
+- **The correlation is `NaN`** (not computable), indicating:
+  - Possible **constant values** in Deep Learning predictions.
+  - The **Deep Learning model lacks variability** in outputs.
+  - **FGWAS ranks SNPs differently**, while the DL model assigns similar scores to all.
+
+### 2.4 SNP Comparison Between FGWAS and Deep Learning
+
+- **FGWAS identifies high-confidence SNPs** with strong associations (`rs629301`, `rs2479409`).
+- **Deep Learning assigns nearly identical prediction scores** (~0.618) to all SNPs, suggesting:
+  - The model might be **underfitting**.
+  - A better **feature selection or hyperparameter tuning** is needed.
+
+---
+
+## 3. Next Steps for Improvement
+
+### **Investigate Deep Learning Predictions**
+- The **constant predictions** suggest potential issues:
+  - **Check the activation function** (Try `Softmax` for multi-class instead of `Sigmoid`).
+  - **Adjust the learning rate and number of epochs**.
+  - **Ensure label imbalance is handled properly**.
+
+### **Try a Different Loss Function**
+- Instead of `binary_crossentropy`, experiment with **Mean Squared Error (MSE)** or **categorical crossentropy** if class labels are imbalanced.
+
+### **Use a More Complex Neural Network**
+- Add **dropout layers** and more **neurons** to capture better feature interactions.
+
+### **Increase Data Variability**
+- Ensure SNPs in `fgwas_results.txt` are correctly mapped to Deep Learning predictions.
+
+
+
+
 ---
 
 ## **5. Comparing fgwas and XGBoost**
