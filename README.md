@@ -185,4 +185,9 @@ shap.summary_plot(shap_values, X_test)
 3. **SHAP and feature importance analysis** help interpret XGBoost results. ✅
 4. **Comparison shows that both methods have unique strengths** and can be used together. ✅
 
-Would you like to integrate XGBoost and fgwas into a single **hybrid analysis pipeline**? 🚀
+## Author
+
+**Etienne Ntumba Kabongo**  
+📧 Email: [etienne.ntumba.kabongo@umontreal.ca](mailto:etienne.ntumba.kabongo@umontreal.ca)  
+🔗 GitHub: [EtienneNtumba](https://github.com/EtienneNtumba)
+
